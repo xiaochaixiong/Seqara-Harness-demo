@@ -57,4 +57,18 @@ class PublicEditionTests(unittest.TestCase):
         self.assertIn('* text=auto eol=lf',text)
         self.assertIn('*.cmd text eol=crlf',text)
 
+    def test_readme_skill_inventory_matches_public_distribution(self):
+        text=(ROOT/'README.md').read_text('utf-8')
+        linked=set(re.findall(r'\]\((runtime/toolkit-plugin/skills/[^)]+/SKILL\.md)\)',text))
+        shipped={p.relative_to(ROOT).as_posix() for p in (ROOT/'runtime/toolkit-plugin/skills').glob('*/SKILL.md')}
+        self.assertEqual(linked,shipped)
+        self.assertTrue(linked)
+        for rel in linked:
+            skill=(ROOT/rel).read_text('utf-8')
+            self.assertRegex(skill,r'(?m)^name:\s*\S+')
+            self.assertRegex(skill,r'(?m)^description:\s*\S+')
+        self.assertIn('报告撰写 Skill（可选扩展）',text)
+        self.assertIn('PPT 制作 Skill（可选扩展）',text)
+        self.assertIn('未随公开仓库预装',text)
+
 if __name__=='__main__':unittest.main()
