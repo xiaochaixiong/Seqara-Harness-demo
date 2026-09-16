@@ -580,7 +580,7 @@ def generate_project_stat_tables(
                 if not table4.empty:
                     table4.to_excel(writer, index=False, sheet_name="表4_专业覆盖(全额)")
                     table5.to_excel(writer, index=False, sheet_name="表5_专业覆盖(均分)")
-    
+
             # 与经典版一致：逐行设置行高（避免部分环境下 sheet_format.defaultRowHeight 表现不一致）
             wb = openpyxl.load_workbook(staged_file)
             for sn in wb.sheetnames:
