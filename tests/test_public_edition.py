@@ -52,4 +52,9 @@ class PublicEditionTests(unittest.TestCase):
         for name in names:self.assertTrue((ROOT/'native'/name).is_file(),name)
         self.assertNotIn("root/'native/qml'",source)
 
+    def test_repository_declares_portable_line_endings(self):
+        text=(ROOT/'.gitattributes').read_text('utf-8')
+        self.assertIn('* text=auto eol=lf',text)
+        self.assertIn('*.cmd text eol=crlf',text)
+
 if __name__=='__main__':unittest.main()
