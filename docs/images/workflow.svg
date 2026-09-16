@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="360" viewBox="0 0 1440 360" role="img" aria-labelledby="title desc">
+<title id="title">Seqara Harness 工作流程</title><desc id="desc">选择本地材料，通过桌面工作台或可选智能会话处理，然后交付 Excel、Word 和文件。</desc>
+<rect width="1440" height="360" rx="24" fill="#141a20"/>
+<g font-family="Segoe UI,Microsoft YaHei,sans-serif">
+<text x="64" y="70" fill="#9daeb9" font-size="18" letter-spacing="4">SEQARA HARNESS / PUBLIC DEMO</text>
+<text x="64" y="129" fill="#f5f7f9" font-size="38" font-weight="600">让复杂工作，有序发生。</text>
+<g fill="#222d35" stroke="#44535d"><rect x="64" y="176" width="362" height="117" rx="14"/><rect x="539" y="176" width="362" height="117" rx="14"/><rect x="1014" y="176" width="362" height="117" rx="14"/></g>
+<g fill="#eff5f8" font-size="25" font-weight="600"><text x="94" y="222">01 / 选择材料</text><text x="569" y="222">02 / 组织工作</text><text x="1044" y="222">03 / 交付结果</text></g>
+<g fill="#b7c7d1" font-size="18"><text x="94" y="263">本地表格 · 活动正文 · 文档</text><text x="569" y="263">桌面工具 · 可选智能会话</text><text x="1044" y="263">Excel · Word · 文件交付</text></g>
+<g stroke="#8ea6b3" stroke-width="2" fill="none"><path d="M454 235h53m-10-9 10 9-10 9"/><path d="M929 235h53m-10-9 10 9-10 9"/></g>
+</g></svg>

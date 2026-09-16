@@ -1,0 +1,52 @@
+{
+  "fontFamily": "Segoe UI",
+  "fontFallbacks": [
+    "Segoe UI",
+    "Microsoft YaHei",
+    "PingFang SC",
+    "Arial"
+  ],
+  "webFontFamily": "var(--dsw-font-family)",
+  "font": {
+    "display": 20,
+    "headline": 16,
+    "title": 16,
+    "body": 14,
+    "label": 13,
+    "caption": 12
+  },
+  "layout": {
+    "pageInset": 32,
+    "pageTop": 28,
+    "sectionGap": 20,
+    "fieldGap": 12,
+    "controlHeight": 40,
+    "footerHeight": 104,
+    "headerHeight": 44,
+    "radius": 8
+  },
+  "light": {
+    "canvas": "#fafafb",
+    "panel": "#f1f2f4",
+    "text": "#202328",
+    "muted": "#656c77",
+    "line": "#daddE2",
+    "hover": "#e8eaee",
+    "selected": "#e2e5ea",
+    "primary": "#202328",
+    "onPrimary": "#fafafb",
+    "focus": "#294bc4"
+  },
+  "dark": {
+    "canvas": "#191b20",
+    "panel": "#22252b",
+    "text": "#e7e9ed",
+    "muted": "#b8bec8",
+    "line": "#363a42",
+    "hover": "#2d3139",
+    "selected": "#343942",
+    "primary": "#e7e9ed",
+    "onPrimary": "#202328",
+    "focus": "#a9bcff"
+  }
+}

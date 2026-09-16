@@ -1,0 +1,34 @@
+/* One radius for window surfaces and rectangular controls; circular glyphs
+   and switches keep their geometric meaning. */
+:root{--sq-radius:8px;--sq-traffic-close:#ff5f57}
+body[data-seqara-window-inactive]{--sq-traffic-close:#b8b8bd}
+body :is([role='dialog'],[role='alertdialog'],[role='menu'],.sq-settings,[data-composer-card],input:not([type='radio']):not([type='checkbox']),textarea,select){border-radius:var(--sq-radius)!important;corner-shape:round!important}
+body button:not([role='switch']){border-radius:var(--sq-radius)!important;corner-shape:round!important}
+/* Settings are rendered inside the sidebar slot. Keep its modal above the
+   conversation when the responsive sidebar enters its collapsed animation. */
+body [class*='_sidebarCol']:has([aria-modal='true']){position:relative;z-index:1001;overflow:visible}
+body [class*='_root']:has(>[class*='_logoRow']):has([aria-modal='true']){animation:none!important;overflow:visible}
+/* Plugin confirmation dialogs are portalled outside the sidebar. Their whole
+   overlay (including its mask) must sit above the settings stacking context. */
+body:has(.sq-settings)>[role='presentation']:has(>[aria-modal='true']),
+body:has(.sq-settings)>[data-dsh-market-portal]{position:relative;z-index:1100}
+body:has(.sq-settings)>[role='presentation']:has(>[aria-modal='true']){position:fixed}
+body :is([role='dialog'],[role='alertdialog'])>[class*='_header'],body .sq-settings>[class*='_content']>[class*='_header']{
+  height:44px;min-height:44px;box-sizing:border-box;padding:8px 12px;align-items:center;
+}
+body :is([role='dialog'],[role='alertdialog']) button:is([class*='_close'],[aria-label='关闭'],[aria-label='Close']){
+  position:relative;display:inline-flex;justify-content:center;align-items:center;
+  flex:0 0 28px;width:28px!important;height:28px!important;min-width:28px!important;min-height:28px!important;max-width:28px!important;max-height:28px!important;
+  padding:0!important;margin:0;border:0!important;background:transparent!important;
+}
+body :is([role='dialog'],[role='alertdialog']) button:is([class*='_close'],[aria-label='关闭'],[aria-label='Close'])::before{
+  content:'';position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
+  box-sizing:border-box;width:12px;height:12px;min-width:12px;min-height:12px;
+  padding:0;margin:0;border:0;aspect-ratio:1;border-radius:50%!important;corner-shape:round!important;clip-path:circle(50%);background:var(--sq-traffic-close);
+}
+body :is([role='dialog'],[role='alertdialog']) button:is([class*='_close'],[aria-label='关闭'],[aria-label='Close'])>svg{
+  position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:8px!important;height:8px!important;opacity:0;z-index:1;
+}
+body :is([role='dialog'],[role='alertdialog']) button:is([class*='_close'],[aria-label='关闭'],[aria-label='Close']):hover>svg{opacity:1}
+body :is([role='dialog'],[role='alertdialog']) button:is([class*='_close'],[aria-label='关闭'],[aria-label='Close']):focus-visible{outline:1.5px solid var(--nv-focus);outline-offset:-3px;border-radius:50%!important}
+[data-sq-network-disabled]{opacity:.4!important;cursor:default!important;pointer-events:none}

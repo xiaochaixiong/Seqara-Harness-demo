@@ -1,0 +1,124 @@
+/* Shared by the live sidebar, its offline snapshot and the first-launch shell. */
+:is([data-pane='sidebar'],[class*='_sidebarCol'],.sq-shell) *{scrollbar-width:auto!important;scrollbar-color:auto!important}
+:is([data-pane='sidebar'],[class*='_sidebarCol'],.sq-shell) *::-webkit-scrollbar{width:3px!important;height:3px!important}
+:is([data-pane='sidebar'],[class*='_sidebarCol'],.sq-shell) *::-webkit-scrollbar-thumb{background:#c8cbd0!important;border:0!important;border-radius:3px!important}
+:is([data-pane='sidebar'],[class*='_sidebarCol'],.sq-shell) *::-webkit-scrollbar-track{background:transparent!important}
+:is([data-pane='sidebar'],[class*='_sidebarCol'],.sq-shell) *::-webkit-scrollbar-button{display:none!important;width:0!important;height:0!important}
+[class*='_rowActions']{opacity:1!important;visibility:visible!important}
+[role='tooltip'],[role='menu']{z-index:2147483000!important}
+:is([class*='_root']:has(>[class*='_logoRow']),.sq-shell){
+  --sq-nav-icon:20px;--sq-nav-gap:12px;--sq-nav-row:36px;
+}
+
+/* The raised DSH mark identifies the signature's runtime foundation.
+   Monochrome treatment also applies to previously cached sidebar images. */
+:is([class*='_logoRow'],.sq-shell-logo){
+  display:grid;grid-template-columns:minmax(0,1fr) 28px;align-items:center;
+  height:60px;min-height:60px;padding:0;gap:8px;margin-bottom:8px;overflow:visible;
+  /* Match the workspace list's trailing inset so both header actions align. */
+  padding-inline-start:8px;padding-inline-end:16px;box-sizing:border-box;
+}
+[class*='_logoRow'] button[class*='_brand']:has([data-seqara-signature]){
+  grid-area:1 / 1;display:flex;align-items:center;justify-content:flex-start;gap:0;
+  width:100%;height:44px;min-width:0;box-sizing:border-box;padding:0;overflow:visible;
+}
+[class*='_logoRow'] [data-seqara-signature],
+[class*='_logoRow'] [data-seqara-signature] img{width:166px;height:37px;transform:none;flex-shrink:0}
+[class*='_logoRow'] [data-seqara-signature]{transform:translateX(-4px)}
+[data-seqara-signature] img,.sq-shell-logo>svg{filter:brightness(0);opacity:.88}
+body[data-ds-dark-theme] [data-seqara-signature] img,
+body[data-ds-dark-theme] .sq-shell-logo>svg{filter:brightness(0) invert(1);opacity:.9}
+body [data-seqara-compact],body[data-ds-dark-theme] [data-seqara-compact]{color:var(--nv-text)}
+[class*='_logoRow'] [class*='_brandIdentity']:has([data-seqara-signature]),
+[class*='_logoRow'] [class*='_brandName']:has([data-seqara-signature]){height:37px;flex-shrink:0}
+[class*='_logoRow'] button[class*='_brand']:has([data-seqara-signature])::after,
+.sq-shell-logo::after{
+  content:'DSH';display:inline-flex;align-items:center;justify-content:center;
+  box-sizing:border-box;flex-shrink:0;height:18px;padding:0 5px;white-space:nowrap;
+  margin-left:-8px;transform:translate(-4px,-9px);border:0;border-radius:8px;
+  background:color-mix(in srgb,var(--nv-text) 10%,var(--nv-sidebar));color:var(--nv-text);
+  font:600 10px/1 'Segoe UI','Microsoft YaHei',sans-serif;letter-spacing:.04em;
+  pointer-events:none;
+}
+[class*='_logoRow'] [class*='_toggle'],.sq-shell-logo button{
+  grid-area:1 / 2;justify-self:end;z-index:1;width:28px;height:28px;min-height:28px;padding:0;
+}
+.sq-shell-logo{grid-template-columns:166px minmax(0,1fr) 28px;gap:0}
+.sq-shell-logo>svg{grid-area:1 / 1;justify-self:start;width:166px;transform:translateX(-4px)}
+.sq-shell-logo::after{grid-area:1 / 2;justify-self:start}
+.sq-shell-logo button{grid-area:1 / 3}
+/* The drawer tooltip is clipped by the native sidebar boundary. Keep its
+   accessible button label, but omit this redundant visual hint. */
+[class*='_logoRow'] button[class*='_toggle'] + [role='tooltip']{display:none!important}
+.sq-shell.collapsed .sq-shell-logo::after{display:none}
+
+/* Labels, outlines and glyphs share a single column across every tool group. */
+:is([class*='_root']:has(>[class*='_logoRow']),.sq-shell)
+:is([data-native-tool],.sq-extras button,[class*='_settingsArea'] [class*='_triggerRow']>button,[data-sq-local],.sq-shell-scroll button,[data-sq-action='settings']){
+  display:flex;align-items:center;box-sizing:border-box;width:100%;min-height:var(--sq-nav-row);
+  gap:var(--sq-nav-gap);padding:6px 11px;border:1px solid transparent;font-size:14px;line-height:22px;
+}
+:is([class*='_root']:has(>[class*='_logoRow']),.sq-shell)
+button:not([role='dialog'] button) svg:not([data-seqara-compact]){
+  width:var(--sq-nav-icon);height:var(--sq-nav-icon);flex-shrink:0;vertical-align:middle;
+}
+:is([class*='_root']:has(>[class*='_logoRow']),.sq-shell)
+:is([data-native-tool],.sq-extras button,[class*='_settingsArea'] [class*='_triggerRow']>button,[data-sq-local],.sq-shell-scroll button)>span{
+  min-width:0;line-height:22px;
+}
+[class*='_settingsArea'] [class*='_triggerRow']{width:100%;margin:4px 0}
+[class*='_root']:has(>[class*='_logoRow']) button[class*='_newSession']{
+  min-height:36px;height:36px;margin-inline:0;gap:8px;line-height:22px;
+}
+[class*='_root']:has(>[class*='_logoRow']) [class*='_regionArea']{margin:0;padding:0}
+[class*='_root']:has(>[class*='_logoRow']) [class*='_regionArea']>[class*='_root']{padding-right:0}
+/* The workspace list's upstream 2px trailing margin offsets its scrollbar
+   from the tools scroller. Both tracks share the sidebar's trailing edge. */
+[class*='_root']:has(>[class*='_logoRow']) [class*='_regionArea'] [class*='_treeBody']>[class*='_list']{margin-right:0}
+[class*='_root']:has(>[class*='_logoRow']) [class*='_sectionHeader']{
+  padding-left:12px;margin-right:0;align-items:center;
+}
+[class*='_root']:has(>[class*='_logoRow']) [class*='_sectionLabel'],
+:is([class*='_root']:has(>[class*='_logoRow']),.sq-shell) .nv-group{
+  font-family:'Segoe UI','Microsoft YaHei','PingFang SC',sans-serif;
+  font-size:13px;font-weight:400;line-height:20px;letter-spacing:normal;color:var(--nv-muted);
+}
+[data-sq-session-error]{margin:8px 12px;font-size:13px;line-height:20px;overflow-wrap:anywhere;color:var(--nv-text)}
+
+/* The upstream list fade uses a different sidebar fill. The list's own
+   scrollbar already indicates overflow; remove the overlay at the tool seam. */
+[class*='_root']:has(>[class*='_logoRow']) [class*='_regionArea'] [class*='_treeBody']>[class*='_fade']{display:none}
+
+/* The rail is centered on its content area (the right divider is excluded).
+   Upstream quick actions used 36px left-aligned boxes; tools used full width. */
+:is([class*='_collapsed']:has(>[class*='_logoRow']),.sq-cached-collapsed,.sq-shell.collapsed){padding:12px 8px!important}
+:is([class*='_collapsed']:has(>[class*='_logoRow']),.sq-cached-collapsed,.sq-shell.collapsed)
+:is([class*='_logoRow'],.sq-shell-logo){
+  display:flex;justify-content:center;height:36px;min-height:36px;padding:0;margin-bottom:8px;
+}
+:is([class*='_collapsed']:has(>[class*='_logoRow']),.sq-cached-collapsed,.sq-shell.collapsed)
+button:not([role="dialog"] button){
+  box-sizing:border-box;width:36px;min-width:36px;height:36px;min-height:36px;
+  justify-content:center;align-self:center;padding:0!important;margin-inline:auto;gap:0;
+}
+:is([class*='_collapsed']:has(>[class*='_logoRow']),.sq-cached-collapsed)
+button[class*='_brand']:has([data-seqara-signature]){display:none}
+:is([class*='_collapsed']:has(>[class*='_logoRow']),.sq-cached-collapsed)
+:is([class*='_footArea'],[class*='_footerActions'],[class*='_settingsArea'],[class*='_triggerRow']){width:100%;align-items:center}
+:is([class*='_collapsed']:has(>[class*='_logoRow']),.sq-cached-collapsed)
+button[class*='_newSession']{margin-bottom:4px}
+:is([class*='_collapsed']:has(>[class*='_logoRow']),.sq-cached-collapsed)
+[class*='_regionArea']{width:100%;padding:0;margin:0;max-height:80px}
+:is([class*='_collapsed']:has(>[class*='_logoRow']),.sq-cached-collapsed)
+[class*='_sectionHeader']{justify-content:center;height:36px;padding:0;margin:0 0 4px}
+:is([class*='_collapsed']:has(>[class*='_logoRow']),.sq-cached-collapsed)
+[class*='_search']:has(>button){margin:0 auto}
+:is([class*='_collapsed']:has(>[class*='_logoRow']),.sq-cached-collapsed)
+[class*='_footerActions']{padding-top:12px}
+:is([class*='_collapsed']:has(>[class*='_logoRow']),.sq-cached-collapsed,.sq-shell.collapsed)
+:is([data-native-tool],.sq-extras button)[data-running]::after{display:none}
+
+/* A saved expanded sidebar must hide the same text when collapsed offline. */
+.sq-cached-collapsed .sq-extras button span{display:none!important}
+.sq-shell.collapsed .sq-shell-logo button{margin-inline:auto}
+.sq-shell .sq-shell-logo button{padding:0;justify-content:center}

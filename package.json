@@ -1,0 +1,11 @@
+{
+  "name": "seqara-harness-demo",
+  "version": "0.8.0-demo.1",
+  "private": true,
+  "description": "Windows desktop workspace with local document tools and DeepSeek Harness",
+  "scripts": {
+    "test": "node --test tests/desktop-io.test.mjs tests/error-messages.test.cjs tests/navigation.test.cjs tests/offline-host.test.cjs tests/pdf-compat.test.cjs tests/repairs.test.cjs tests/updates.test.cjs tests/vision.test.mjs tests/public-edition.test.mjs",
+    "build": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/package-native.ps1"
+  },
+  "license": "Apache-2.0"
+}

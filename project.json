@@ -1,0 +1,12 @@
+{
+  "name": "有序 Seqara",
+  "version": "0.8.0-demo.1",
+  "baseline": "native-v0.3.6",
+  "platform": "windows-x64",
+  "entrypoint": "native/desktop.py",
+  "launcher": "启动有序 Seqara.cmd",
+  "release": "release/Seqara-v0.8.0-demo.1",
+  "dataDirectory": "%APPDATA%/SeqaraHarnessDemo",
+  "officialRuntimeBaseline": "0.1.5-rc.1",
+  "personalDataMigrated": false
+}
